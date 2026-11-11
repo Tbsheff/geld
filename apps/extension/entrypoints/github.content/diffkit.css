@@ -94,6 +94,7 @@ html[data-geld-theme='diffkit']:not([data-color-mode='dark']) {
   --ln-text-header: var(--neutral-6) !important;
   --ln-text-muted: color-mix(in oklch, var(--neutral-7) 26%, var(--neutral-8)) !important;
   --ln-text-nav: color-mix(in oklch, var(--neutral-7) 34%, var(--neutral-8)) !important;
+  --ln-link: oklch(0.518 calc(0.019 * var(--neutral-tint)) var(--neutral-hue)) !important;
   --ln-icon-faint: color-mix(in oklch, var(--neutral-9) 29%, var(--neutral-10)) !important;
 
   --ln-focus: lch(50.84 48.54 140.93) !important;
@@ -216,6 +217,7 @@ html[data-geld-theme='diffkit'][data-color-mode='dark'] {
   --ln-text-header: color-mix(in oklch, var(--neutral-11) 20%, var(--neutral-12)) !important;
   --ln-text-muted: color-mix(in oklch, var(--neutral-9) 65%, var(--neutral-10)) !important;
   --ln-text-nav: color-mix(in oklch, var(--neutral-9) 79%, var(--neutral-10)) !important;
+    --ln-link: var(--neutral-10) !important;
   --ln-icon-faint: var(--neutral-7) !important;
 
   --ln-focus: lch(58.95 53 141.63) !important;
@@ -332,6 +334,7 @@ html[data-geld-theme='diffkit'][data-color-mode='dark'] {
     --ln-text-header: color-mix(in oklch, var(--neutral-11) 20%, var(--neutral-12)) !important;
     --ln-text-muted: color-mix(in oklch, var(--neutral-9) 65%, var(--neutral-10)) !important;
     --ln-text-nav: color-mix(in oklch, var(--neutral-9) 79%, var(--neutral-10)) !important;
+    --ln-link: var(--neutral-10) !important;
     --ln-icon-faint: var(--neutral-7) !important;
 
     --ln-focus: lch(58.95 53 141.63) !important;
@@ -395,8 +398,8 @@ html[data-geld-theme='diffkit'] {
   --fgColor-muted: var(--ln-text-muted) !important;
   --fgColor-subtle: var(--ln-text-nav) !important;
   --fgColor-onEmphasis: var(--ln-accent-text) !important;
-  --fgColor-accent: var(--ln-accent) !important;
-  --fgColor-link: var(--ln-accent) !important;
+  --fgColor-accent: var(--ln-link) !important;
+  --fgColor-link: var(--ln-link) !important;
   --fgColor-success: var(--ln-success) !important;
   --fgColor-danger: var(--ln-removed) !important;
   --fgColor-attention: var(--ln-warning) !important;
@@ -420,11 +423,11 @@ html[data-geld-theme='diffkit'] {
   --borderColor-neutral: var(--ln-chip-border) !important;
 
   
-  --color-accent-fg: var(--ln-accent) !important;
+  --color-accent-fg: var(--ln-link) !important;
   --color-accent-emphasis: var(--ln-accent) !important;
   --color-accent-muted: var(--ln-pill-neutral) !important;
   --color-pr-merge-fg: var(--ln-merge) !important;
-  --color-fg-accent: var(--ln-accent) !important;
+  --color-fg-accent: var(--ln-link) !important;
   --color-fg-success: var(--ln-success) !important;
   --color-fg-danger: var(--ln-removed) !important;
   --color-fg-attention: var(--ln-warning) !important;
@@ -561,6 +564,7 @@ html[data-geld-theme='diffkit'] {
 }
 
 html[data-geld-theme='diffkit'] body {
+  font-size: 13px;
   font-family:
     'Inter Variable', 'Inter', 'Avenir Next', ui-sans-serif, system-ui,
     -apple-system, 'Segoe UI', sans-serif;
@@ -690,8 +694,9 @@ html[data-geld-theme='diffkit'] .AppHeader {
 }
 
 
-html[data-geld-theme='diffkit'] .prc-components-UnderlineItem[aria-current]::after,
-html[data-geld-theme='diffkit'] .prc-components-UnderlineItem.selected::after {
+html[data-geld-theme='diffkit'] [class*='UnderlineItem'][aria-current]::after,
+html[data-geld-theme='diffkit'] [class*='UnderlineItem'].selected::after,
+html[data-geld-theme='diffkit'] [class*='NavItem'][aria-current]::after {
   background: var(--ln-text-strong);
 }
 
@@ -708,4 +713,11 @@ html[data-geld-theme='diffkit'] .commit-ref a {
 html[data-geld-theme='diffkit'] .Counter {
   background: var(--ln-pill-neutral);
   color: var(--ln-text-muted);
+}
+
+html[data-geld-theme='diffkit'] .flash,
+html[data-geld-theme='diffkit'] .flash-banner {
+  background: var(--ln-group);
+  border-color: var(--ln-card-border);
+  color: var(--ln-text);
 }
