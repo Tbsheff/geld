@@ -38,6 +38,7 @@ export const USAGE_TOGGLES = [
   'collapseDescription',
   'attachmentLightbox',
   'relatedLinks',
+  'diffkitTheme',
   'aiEnabled',
   'aiJev',
 ] as const satisfies readonly (keyof GeldSettings)[];

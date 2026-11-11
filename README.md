@@ -22,6 +22,10 @@ Anywhere GitHub shows a list of changed files (pull request _Files changed_ tab,
 
 Geld can be toggled from the toolbar popup, which is contextual: it shows the current repository, how many files are hidden on the tab (with the list of paths), and one-click "turn off for this repo / org" actions. The toolbar icon carries the hidden-file count as a badge, and **Alt+Shift+T** shows or hides the hidden files on the current page for the rest of the visit without touching your settings (rebind it in your browser's extension-shortcut settings). All settings sync via `browser.storage.sync` and apply instantly to open tabs.
 
+### Fork addition: Diffkit theme
+
+This fork adds a **Diffkit theme** (Settings → General → "Diffkit theme", on by default): github.com is reskinned after [Diffkit](https://github.com/stylessh/diffkit) — a Linear-derived neutral palette, Inter Variable and Geist Mono type (bundled, no external requests), hairline rings, softer corners and diffkit's diff tints, in light and dark. It works by declaring Diffkit's design tokens and pointing GitHub's own Primer CSS variables at them (`apps/extension/entrypoints/github.content/diffkit.css`), so the look survives GitHub's markup changes far better than selector-by-selector restyling. Everything Geld does — hidden files, the digest, counts — renders on top of it unchanged.
+
 ### What gets hidden
 
 Files are grouped into **categories**, each with its own switch. **Tests** is on by default; the others are opt-in in the popup or options:

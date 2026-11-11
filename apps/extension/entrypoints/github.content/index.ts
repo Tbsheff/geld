@@ -15,7 +15,9 @@ import { installErrorCapture } from '../../src/lib/error-capture';
 import { repoConfigChoicesItem, whitespaceOptOutsItem } from '../../src/lib/local-state';
 import { settingsItem } from '../../src/lib/storage';
 import { redirectEarly } from '../../src/github/whitespace-viewed';
+import { applyDiffkitTheme } from '../../src/github/diffkit-theme';
 import './style.css';
+import './diffkit.css';
 
 /**
  * How long a retired copy waits before answering the background's ping. A
@@ -122,6 +124,7 @@ export default defineContentScript({
 
     const [settings, whitespaceOptOuts] = await Promise.all([settingsItem.getValue(), whitespaceOptOutsItem.getValue()]);
     mark('settings');
+    applyDiffkitTheme(settings.diffkitTheme);
     if (retired) return;
     // A diff page opened without GitHub's "hide whitespace" parameter goes to its `?w=1` form now, while the
     // document is still streaming, so the page is never seen without it (the controller handles later navigations).
@@ -164,6 +167,7 @@ export default defineContentScript({
 
     const unwatchSettings = settingsItem.watch((settings) => {
       showBadge = settings.showBadge;
+      applyDiffkitTheme(settings.diffkitTheme);
       started.updateSettings(settings);
     });
     // The background fetched a newer pattern catalog: apply it without a reload.

@@ -74,6 +74,7 @@ const BOOLEAN_KEYS = [
   'collapseDescription',
   'attachmentLightbox',
   'relatedLinks',
+  'diffkitTheme',
   'aiEnabled',
   'aiJev',
 ] as const;

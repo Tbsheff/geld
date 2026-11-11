@@ -89,6 +89,7 @@ const PERSONAL_KEYS = [
   'testSyntaxes',
   'attachmentLightbox',
   'relatedLinks',
+  'diffkitTheme',
 ] as const;
 
 /**

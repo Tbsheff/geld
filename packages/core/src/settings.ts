@@ -144,6 +144,7 @@ export interface GeldSettings {
   readonly attachmentLightbox: boolean;
   /** A "Related links" section in the conversation sidebar: the tickets, chat threads, agent sessions and docs the description links to. */
   readonly relatedLinks: boolean;
+  readonly diffkitTheme: boolean;
   /**
    * Put a "Submit review" button in the pull request's tab bar, beside the
    * line counts, on every tab (the Files changed tab's own button gives way to it).
@@ -270,6 +271,7 @@ export const DEFAULT_SETTINGS: GeldSettings = {
   collapseDescription: true,
   attachmentLightbox: true,
   relatedLinks: true,
+  diffkitTheme: true,
   quickReview: true,
   holdToMerge: false,
   reviewBots: [],
@@ -534,6 +536,7 @@ export function normalizeSettings(value: unknown): GeldSettings {
     collapseDescription: bool(record, 'collapseDescription', DEFAULT_SETTINGS.collapseDescription),
     attachmentLightbox: bool(record, 'attachmentLightbox', DEFAULT_SETTINGS.attachmentLightbox),
     relatedLinks: bool(record, 'relatedLinks', DEFAULT_SETTINGS.relatedLinks),
+    diffkitTheme: bool(record, 'diffkitTheme', DEFAULT_SETTINGS.diffkitTheme),
     quickReview: bool(record, 'quickReview', DEFAULT_SETTINGS.quickReview),
     holdToMerge: bool(record, 'holdToMerge', DEFAULT_SETTINGS.holdToMerge),
     reviewBots: isStringArray(record.reviewBots) ? record.reviewBots : DEFAULT_SETTINGS.reviewBots,

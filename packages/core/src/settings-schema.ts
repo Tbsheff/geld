@@ -260,6 +260,15 @@ export const SETTINGS_SCHEMA: readonly SettingsSection[] = [
       },
       {
         kind: 'toggle',
+        key: 'diffkitTheme',
+        label: 'Diffkit theme',
+        description:
+          'Reskin GitHub with the Diffkit look: a Linear-derived neutral palette, Inter and Geist Mono type, hairline rings and softer corners, in light and dark. Everything Geld does keeps working on top of it.',
+        popup: false,
+        surfaces: ['extension'],
+      },
+      {
+        kind: 'toggle',
         key: 'attachmentLightbox',
         label: 'Attachment lightbox',
         description: 'View image and video attachments in a larger player in issues and pull requests.',

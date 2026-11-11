@@ -1,0 +1,662 @@
+
+
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('/fonts/inter-var.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Geist Mono Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('/fonts/geist-mono-var.woff2') format('woff2');
+}
+
+html[data-geld-theme='diffkit']:not([data-color-mode='dark']) {
+  color-scheme: light;
+
+  --neutral-hue: 235;
+  --neutral-tint: 1;
+  --neutral-1: oklch(0.165 calc(0.007 * var(--neutral-tint)) var(--neutral-hue));
+  --neutral-2: oklch(0.197 calc(0.008 * var(--neutral-tint)) var(--neutral-hue));
+  --neutral-3: oklch(0.256 calc(0.011 * var(--neutral-tint)) var(--neutral-hue));
+  --neutral-4: oklch(0.303 calc(0.013 * var(--neutral-tint)) var(--neutral-hue));
+  --neutral-5: oklch(0.349 calc(0.014 * var(--neutral-tint)) var(--neutral-hue));
+  --neutral-6: oklch(0.396 calc(0.016 * var(--neutral-tint)) var(--neutral-hue));
+  --neutral-7: oklch(0.459 calc(0.018 * var(--neutral-tint)) var(--neutral-hue));
+  --neutral-8: oklch(0.548 calc(0.02 * var(--neutral-tint)) var(--neutral-hue));
+  --neutral-9: oklch(0.645 calc(0.018 * var(--neutral-tint)) var(--neutral-hue));
+  --neutral-10: oklch(0.716 calc(0.016 * var(--neutral-tint)) var(--neutral-hue));
+  --neutral-11: oklch(0.86 calc(0.008 * var(--neutral-tint)) var(--neutral-hue));
+  --neutral-12: oklch(0.932 calc(0.004 * var(--neutral-tint)) var(--neutral-hue));
+
+  --ln-sidebar: color-mix(in oklch, var(--neutral-12) 88%, white);
+  --ln-main: color-mix(in oklch, var(--neutral-12) 29%, white);
+  --ln-main-border: color-mix(in oklch, var(--neutral-11) 27%, var(--neutral-12));
+  --ln-main-shadow: lch(0 0 0 / 0.02) 0 3px 6px -2px, lch(0 0 0 / 0.04) 0 1px 1px 0;
+  --ln-header-rule: color-mix(in oklch, var(--neutral-12) 88%, white);
+  --ln-group: color-mix(in oklch, var(--neutral-12) 70%, white);
+  --ln-row-hover: var(--ln-group);
+  --ln-row-selected: lch(0 0 0 / 0.06);
+  --ln-nav-hover: color-mix(in oklch, var(--neutral-11) 10%, var(--neutral-12));
+  --ln-nav-selected: color-mix(in oklch, var(--neutral-11) 14%, var(--neutral-12));
+  --ln-checkbox: color-mix(in oklch, var(--neutral-8) 61%, var(--neutral-9));
+
+  --glass-light: var(--ln-card);
+  --glass-shade: color-mix(in oklch, var(--ln-text), black 60%);
+  --glass-edge: color-mix(in oklch, var(--glass-light) 90%, transparent);
+  --glass-rim: color-mix(in oklch, var(--glass-light) 70%, transparent);
+  --glass-halo:
+    color-mix(in oklch, var(--glass-shade) 15%, transparent) 0 0 1px 0,
+    color-mix(in oklch, var(--glass-shade) 3%, transparent) 0 1px 2px 0;
+  --glass-control: var(--glass-chip);
+  --glass-well:
+    inset 0 1px 2px 0 color-mix(in oklch, var(--glass-shade) 5%, transparent),
+    inset 0 0 0 1px color-mix(in oklch, var(--glass-shade) 4%, transparent);
+  --glass-chip: inset 0 0 0 1px var(--glass-rim), var(--glass-halo);
+  --glass-solid:
+    inset 0 1px 0 0 color-mix(in oklch, var(--glass-light) 22%, transparent),
+    inset 0 0 0 1px color-mix(in oklch, var(--glass-shade) 7%, transparent),
+    var(--glass-halo);
+
+  --ln-button: var(--ln-main);
+  --ln-button-hover: var(--ln-group);
+  --ln-button-ring: var(--glass-control);
+  --ln-tab-selected: var(--ln-card);
+  --ln-tab-selected-ring:
+    inset 0 0 0 1px var(--glass-rim),
+    color-mix(in oklch, var(--glass-shade) 14%, transparent) 0 0 1px 0,
+    color-mix(in oklch, var(--glass-shade) 6%, transparent) 0 1px 2px 0;
+  --ln-ring-color: lch(0 0 0 / 0.09);
+  --ln-ghost-hover: lch(0 0 0 / 0.05);
+  --ln-menu-hover: lch(0 0 0 / 0.045);
+  --ln-item-hover: lch(0 0 0 / 0.05);
+  --ln-go-fill: lch(0 0 0 / 0.03);
+  --ln-send: lch(100 0 0);
+  --ln-send-ring: var(--glass-control);
+
+  --ln-popover: lch(100 0 0);
+  --ln-popover-border: var(--neutral-12);
+  --ln-popover-shadow:
+    lch(0 0 0 / 0.1) 0 0 1px 0, lch(0 0 0 / 0.08) 0 2px 6px -2px,
+    lch(0 0 0 / 0.06) 0 8px 16px -8px;
+  --ln-tooltip: var(--ln-popover);
+  --ln-tooltip-border: var(--ln-popover-border);
+  --ln-key-border: lch(0 0 0 / 0.1);
+  --ln-dialog: var(--ln-popover);
+  --ln-dialog-backdrop: lch(0 0 0 / 0.3);
+  --ln-sheet-backdrop: lch(0 0 0 / 0.23);
+  --ln-scrim: lch(0 0 0 / 0.2);
+
+  --ln-chip: var(--ln-main);
+  --ln-chip-border: color-mix(in oklch, var(--neutral-11) 92%, var(--neutral-12));
+  --ln-card: lch(100 0 0);
+  --ln-card-border: var(--neutral-12);
+  --ln-comment-card: lch(100 0 0);
+  --ln-comment-card-border: color-mix(in oklch, var(--neutral-11) 44%, var(--neutral-12));
+  --ln-activity-line: var(--neutral-11);
+  --ln-composer-placeholder: color-mix(in oklch, var(--neutral-9) 29%, var(--neutral-10));
+  --ln-composer-send: color-mix(in oklch, var(--neutral-12) 88%, white);
+  --ln-pill-neutral: oklch(0.483 0.012 var(--neutral-hue) / 0.1);
+  --ln-pill-ok: lch(60 64.37 141.95 / 0.12);
+  --ln-pill-blocked: lch(50 73 29 / 0.1);
+
+  --ln-text: var(--neutral-4);
+  --ln-text-strong: color-mix(in oklch, var(--neutral-5) 53%, var(--neutral-6));
+  --ln-text-header: var(--neutral-6);
+  --ln-text-muted: color-mix(in oklch, var(--neutral-7) 26%, var(--neutral-8));
+  --ln-text-nav: color-mix(in oklch, var(--neutral-7) 34%, var(--neutral-8));
+  --ln-icon-faint: color-mix(in oklch, var(--neutral-9) 29%, var(--neutral-10));
+
+  --ln-focus: lch(50.84 48.54 140.93);
+  --ln-accent: lch(50.84 48.54 140.93);
+  --ln-accent-text: lch(100 0 0);
+  --ln-success: lch(60 64.37 141.95);
+  --ln-warning: lch(72 80 80);
+  --ln-merged: lch(50 62 300);
+  --ln-merge: lch(50.84 48.54 140.93);
+  --ln-merge-hover: lch(56.77 52.96 141.15);
+  --ln-blocked: lch(58 73 29);
+  --ln-added: lch(45 80 141.95);
+  --ln-removed: lch(46 80 29);
+  --ln-inline-code: lch(20 50 286.91 / 0.05);
+  --ln-inline-code-ring: color-mix(in oklch, var(--neutral-11) 92%, var(--neutral-12));
+
+  --ln-state-open: lch(60 64.37 141.95);
+  --ln-state-draft: color-mix(in oklch, var(--neutral-8) 15%, var(--neutral-9));
+  --ln-state-merged: lch(50 62 300);
+  --ln-state-closed: lch(58 73 29);
+  --ln-check-passed: lch(60 64.37 141.95);
+  --ln-check-running: lch(72 80 80);
+  --ln-check-failed: lch(58 73 29);
+  --ln-check-skipped: color-mix(in oklch, var(--neutral-9) 29%, var(--neutral-10));
+  --ln-review-approved: lch(60 64.37 141.95);
+  --ln-review-changes: lch(58 73 29);
+  --ln-review-required: lch(72 80 80);
+  --ln-pill-merged: lch(50 62 300 / 0.1);
+  --ln-pill-warning: lch(72 80 80 / 0.16);
+  --ln-pill-ok-text: lch(42 60 141.95);
+  --ln-pill-merged-text: lch(42 62 300);
+  --ln-pill-blocked-text: lch(45 73 29);
+  --ln-pill-warning-text: lch(45 60 70);
+
+  --ln-line-number: color-mix(in oklch, var(--neutral-9) 29%, var(--neutral-10));
+  --ln-gap: color-mix(in oklch, var(--neutral-12) 56%, white);
+
+  --ln-duration: 140ms;
+  --ln-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  --scrollbar-thumb: var(--ln-chip-border);
+}
+
+html[data-geld-theme='diffkit'][data-color-mode='dark'] {
+  color-scheme: dark;
+
+  --ln-sidebar: color-mix(in oklch, var(--neutral-1) 85%, black);
+  --ln-main: color-mix(in oklch, var(--neutral-1) 47%, var(--neutral-2));
+  --ln-main-border: var(--neutral-3);
+  --ln-main-shadow: lch(0 0 0 / 0.3) 0 0.5px 1px 1px;
+  --ln-header-rule: var(--neutral-3);
+  --ln-group: color-mix(in oklch, var(--neutral-2) 64%, var(--neutral-3));
+  --ln-row-hover: var(--ln-group);
+  --ln-row-selected: lch(100 0 0 / 0.07);
+  --ln-nav-hover: color-mix(in oklch, var(--neutral-2) 61%, var(--neutral-3));
+  --ln-nav-selected: var(--neutral-3);
+  --ln-checkbox: color-mix(in oklch, var(--neutral-7) 92%, var(--neutral-8));
+
+  --glass-light: var(--ln-text-strong);
+  --glass-shade: color-mix(in oklch, var(--ln-sidebar), black 60%);
+  --glass-edge: color-mix(in oklch, var(--glass-light) 6%, transparent);
+  --glass-rim: color-mix(in oklch, var(--glass-light) 1.8%, transparent);
+  --glass-halo:
+    color-mix(in oklch, var(--glass-shade) 60%, transparent) 0 0 1px 0,
+    color-mix(in oklch, var(--glass-shade) 14%, transparent) 0 1px 2px 0;
+  --glass-well:
+    inset 0 1px 2px 0 color-mix(in oklch, var(--glass-shade) 12%, transparent),
+    inset 0 0 0 1px color-mix(in oklch, var(--glass-light) 2.5%, transparent);
+  --glass-chip:
+    inset 0 1px 0 0 color-mix(in oklch, var(--glass-light) 2.5%, transparent),
+    inset 0 0 0 1px var(--glass-rim), var(--glass-halo);
+  --glass-solid:
+    inset 0 1px 0 0 color-mix(in oklch, var(--glass-light) 10%, transparent),
+    inset 0 0 0 1px color-mix(in oklch, var(--glass-shade) 12%, transparent),
+    var(--glass-halo);
+
+  --ln-button: color-mix(in oklch, var(--ln-main), var(--glass-light) 3.5%);
+  --ln-button-hover: color-mix(in oklch, var(--ln-main), var(--glass-light) 6%);
+  --ln-button-ring: var(--glass-control);
+  --ln-tab-selected: color-mix(in oklch, var(--ln-main), var(--glass-light) 7%);
+  --ln-tab-selected-ring:
+    inset 0 1px 0 0 color-mix(in oklch, var(--glass-light) 3%, transparent),
+    inset 0 0 0 1px var(--glass-rim), var(--glass-halo);
+  --ln-ring-color: lch(100 0 0 / 0.137);
+  --ln-ghost-hover: lch(100 0 0 / 0.06);
+  --ln-menu-hover: lch(100 0 0 / 0.078);
+  --ln-item-hover: lch(100 0 0 / 0.074);
+  --ln-go-fill: lch(100 0 0 / 0.038);
+  --ln-send: var(--neutral-3);
+  --ln-send-ring: var(--glass-control);
+
+  --ln-popover: color-mix(in oklch, var(--neutral-2) 14%, var(--neutral-3));
+  --ln-popover-border: color-mix(in oklch, var(--neutral-5) 79%, var(--neutral-6));
+  --ln-popover-shadow:
+    lch(0 0 0 / 0.125) 0 3px 8px 0, lch(0 0 0 / 0.125) 0 2px 5px 0,
+    lch(0 0 0 / 0.125) 0 1px 1px 0;
+  --ln-tooltip: color-mix(in oklch, var(--neutral-2) 14%, var(--neutral-3));
+  --ln-tooltip-border: var(--neutral-4);
+  --ln-key-border: lch(100 0 0 / 0.068);
+  --ln-dialog: color-mix(in oklch, var(--neutral-2) 49%, var(--neutral-3));
+  --ln-dialog-backdrop: lch(0 0 0 / 0.38);
+  --ln-sheet-backdrop: lch(0 0 0 / 0.45);
+  --ln-scrim: lch(0 0 0 / 0.45);
+
+  --ln-chip: var(--ln-button);
+  --ln-chip-border: color-mix(in oklch, var(--neutral-3) 51%, var(--neutral-4));
+  --ln-card: color-mix(in oklch, var(--neutral-2) 64%, var(--neutral-3));
+  --ln-card-border: color-mix(in oklch, var(--neutral-3) 43%, var(--neutral-4));
+  --ln-comment-card: color-mix(in oklch, var(--neutral-2) 64%, var(--neutral-3));
+  --ln-comment-card-border: color-mix(in oklch, var(--neutral-3) 38%, var(--neutral-4));
+  --ln-activity-line: color-mix(in oklch, var(--neutral-5) 51%, var(--neutral-6));
+  --ln-composer-placeholder: var(--neutral-7);
+  --ln-composer-send: var(--neutral-3);
+  --ln-pill-neutral: oklch(0.684 0.012 var(--neutral-hue) / 0.1);
+  --ln-pill-ok: lch(67.2 64.37 141.95 / 0.14);
+  --ln-pill-blocked: lch(65.2 73 29 / 0.14);
+
+  --ln-text: lch(100 0 0);
+  --ln-text-strong: color-mix(in oklch, var(--neutral-11) 16%, var(--neutral-12));
+  --ln-text-header: color-mix(in oklch, var(--neutral-11) 20%, var(--neutral-12));
+  --ln-text-muted: color-mix(in oklch, var(--neutral-9) 65%, var(--neutral-10));
+  --ln-text-nav: color-mix(in oklch, var(--neutral-9) 79%, var(--neutral-10));
+  --ln-icon-faint: var(--neutral-7);
+
+  --ln-focus: lch(58.95 53 141.63);
+  --ln-success: lch(67.2 64.37 141.95);
+  --ln-warning: lch(80 90 85);
+  --ln-merged: lch(62 58 300);
+  --ln-blocked: lch(65.2 73 29);
+  --ln-added: lch(67.2 64.37 141.95);
+  --ln-removed: lch(65.2 73 29);
+  --ln-inline-code: lch(100 0 0 / 0.06);
+  --ln-inline-code-ring: var(--neutral-4);
+
+  --ln-state-open: lch(67.2 64.37 141.95);
+  --ln-state-draft: color-mix(in oklch, var(--neutral-8) 26%, var(--neutral-9));
+  --ln-state-merged: lch(62 58 300);
+  --ln-state-closed: lch(65.2 73 29);
+  --ln-check-passed: lch(67.2 64.37 141.95);
+  --ln-check-running: lch(80 90 85);
+  --ln-check-failed: lch(65.2 73 29);
+  --ln-check-skipped: color-mix(in oklch, var(--neutral-8) 78%, var(--neutral-9));
+  --ln-review-approved: lch(67.2 64.37 141.95);
+  --ln-review-changes: lch(65.2 73 29);
+  --ln-review-required: lch(80 90 85);
+  --ln-pill-merged: lch(62 58 300 / 0.16);
+  --ln-pill-warning: lch(80 90 85 / 0.14);
+  --ln-pill-ok-text: lch(72 64.37 141.95);
+  --ln-pill-merged-text: lch(72 50 300);
+  --ln-pill-blocked-text: lch(72 60 29);
+  --ln-pill-warning-text: lch(84 70 85);
+
+  --ln-line-number: var(--neutral-7);
+  --ln-gap: var(--neutral-3);
+
+  --scrollbar-thumb: var(--ln-chip-border);
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-geld-theme='diffkit']:not([data-color-mode='light']):not([data-color-mode='dark']) {
+    color-scheme: dark;
+
+    --ln-sidebar: color-mix(in oklch, var(--neutral-1) 85%, black);
+    --ln-main: color-mix(in oklch, var(--neutral-1) 47%, var(--neutral-2));
+    --ln-main-border: var(--neutral-3);
+    --ln-main-shadow: lch(0 0 0 / 0.3) 0 0.5px 1px 1px;
+    --ln-header-rule: var(--neutral-3);
+    --ln-group: color-mix(in oklch, var(--neutral-2) 64%, var(--neutral-3));
+    --ln-row-hover: var(--ln-group);
+    --ln-row-selected: lch(100 0 0 / 0.07);
+    --ln-nav-hover: color-mix(in oklch, var(--neutral-2) 61%, var(--neutral-3));
+    --ln-nav-selected: var(--neutral-3);
+    --ln-checkbox: color-mix(in oklch, var(--neutral-7) 92%, var(--neutral-8));
+
+    --glass-light: var(--ln-text-strong);
+    --glass-shade: color-mix(in oklch, var(--ln-sidebar), black 60%);
+    --glass-edge: color-mix(in oklch, var(--glass-light) 6%, transparent);
+    --glass-rim: color-mix(in oklch, var(--glass-light) 1.8%, transparent);
+    --glass-halo:
+      color-mix(in oklch, var(--glass-shade) 60%, transparent) 0 0 1px 0,
+      color-mix(in oklch, var(--glass-shade) 14%, transparent) 0 1px 2px 0;
+    --glass-well:
+      inset 0 1px 2px 0 color-mix(in oklch, var(--glass-shade) 12%, transparent),
+      inset 0 0 0 1px color-mix(in oklch, var(--glass-light) 2.5%, transparent);
+    --glass-chip:
+      inset 0 1px 0 0 color-mix(in oklch, var(--glass-light) 2.5%, transparent),
+      inset 0 0 0 1px var(--glass-rim), var(--glass-halo);
+    --glass-solid:
+      inset 0 1px 0 0 color-mix(in oklch, var(--glass-light) 10%, transparent),
+      inset 0 0 0 1px color-mix(in oklch, var(--glass-shade) 12%, transparent),
+      var(--glass-halo);
+
+    --ln-button: color-mix(in oklch, var(--ln-main), var(--glass-light) 3.5%);
+    --ln-button-hover: color-mix(in oklch, var(--ln-main), var(--glass-light) 6%);
+    --ln-button-ring: var(--glass-control);
+    --ln-tab-selected: color-mix(in oklch, var(--ln-main), var(--glass-light) 7%);
+    --ln-tab-selected-ring:
+      inset 0 1px 0 0 color-mix(in oklch, var(--glass-light) 3%, transparent),
+      inset 0 0 0 1px var(--glass-rim), var(--glass-halo);
+    --ln-ring-color: lch(100 0 0 / 0.137);
+    --ln-ghost-hover: lch(100 0 0 / 0.06);
+    --ln-menu-hover: lch(100 0 0 / 0.078);
+    --ln-item-hover: lch(100 0 0 / 0.074);
+    --ln-go-fill: lch(100 0 0 / 0.038);
+    --ln-send: var(--neutral-3);
+    --ln-send-ring: var(--glass-control);
+
+    --ln-popover: color-mix(in oklch, var(--neutral-2) 14%, var(--neutral-3));
+    --ln-popover-border: color-mix(in oklch, var(--neutral-5) 79%, var(--neutral-6));
+    --ln-popover-shadow:
+      lch(0 0 0 / 0.125) 0 3px 8px 0, lch(0 0 0 / 0.125) 0 2px 5px 0,
+      lch(0 0 0 / 0.125) 0 1px 1px 0;
+    --ln-tooltip: color-mix(in oklch, var(--neutral-2) 14%, var(--neutral-3));
+    --ln-tooltip-border: var(--neutral-4);
+    --ln-key-border: lch(100 0 0 / 0.068);
+    --ln-dialog: color-mix(in oklch, var(--neutral-2) 49%, var(--neutral-3));
+    --ln-dialog-backdrop: lch(0 0 0 / 0.38);
+    --ln-sheet-backdrop: lch(0 0 0 / 0.45);
+    --ln-scrim: lch(0 0 0 / 0.45);
+
+    --ln-chip: var(--ln-button);
+    --ln-chip-border: color-mix(in oklch, var(--neutral-3) 51%, var(--neutral-4));
+    --ln-card: color-mix(in oklch, var(--neutral-2) 64%, var(--neutral-3));
+    --ln-card-border: color-mix(in oklch, var(--neutral-3) 43%, var(--neutral-4));
+    --ln-comment-card: color-mix(in oklch, var(--neutral-2) 64%, var(--neutral-3));
+    --ln-comment-card-border: color-mix(in oklch, var(--neutral-3) 38%, var(--neutral-4));
+    --ln-activity-line: color-mix(in oklch, var(--neutral-5) 51%, var(--neutral-6));
+    --ln-composer-placeholder: var(--neutral-7);
+    --ln-composer-send: var(--neutral-3);
+    --ln-pill-neutral: oklch(0.684 0.012 var(--neutral-hue) / 0.1);
+    --ln-pill-ok: lch(67.2 64.37 141.95 / 0.14);
+    --ln-pill-blocked: lch(65.2 73 29 / 0.14);
+
+    --ln-text: lch(100 0 0);
+    --ln-text-strong: color-mix(in oklch, var(--neutral-11) 16%, var(--neutral-12));
+    --ln-text-header: color-mix(in oklch, var(--neutral-11) 20%, var(--neutral-12));
+    --ln-text-muted: color-mix(in oklch, var(--neutral-9) 65%, var(--neutral-10));
+    --ln-text-nav: color-mix(in oklch, var(--neutral-9) 79%, var(--neutral-10));
+    --ln-icon-faint: var(--neutral-7);
+
+    --ln-focus: lch(58.95 53 141.63);
+    --ln-success: lch(67.2 64.37 141.95);
+    --ln-warning: lch(80 90 85);
+    --ln-merged: lch(62 58 300);
+    --ln-blocked: lch(65.2 73 29);
+    --ln-added: lch(67.2 64.37 141.95);
+    --ln-removed: lch(65.2 73 29);
+    --ln-inline-code: lch(100 0 0 / 0.06);
+    --ln-inline-code-ring: var(--neutral-4);
+
+    --ln-state-open: lch(67.2 64.37 141.95);
+    --ln-state-draft: color-mix(in oklch, var(--neutral-8) 26%, var(--neutral-9));
+    --ln-state-merged: lch(62 58 300);
+    --ln-state-closed: lch(65.2 73 29);
+    --ln-check-passed: lch(67.2 64.37 141.95);
+    --ln-check-running: lch(80 90 85);
+    --ln-check-failed: lch(65.2 73 29);
+    --ln-check-skipped: color-mix(in oklch, var(--neutral-8) 78%, var(--neutral-9));
+    --ln-review-approved: lch(67.2 64.37 141.95);
+    --ln-review-changes: lch(65.2 73 29);
+    --ln-review-required: lch(80 90 85);
+    --ln-pill-merged: lch(62 58 300 / 0.16);
+    --ln-pill-warning: lch(80 90 85 / 0.14);
+    --ln-pill-ok-text: lch(72 64.37 141.95);
+    --ln-pill-merged-text: lch(72 50 300);
+    --ln-pill-blocked-text: lch(72 60 29);
+    --ln-pill-warning-text: lch(84 70 85);
+
+    --ln-line-number: var(--neutral-7);
+    --ln-gap: var(--neutral-3);
+
+    --scrollbar-thumb: var(--ln-chip-border);
+  }
+}
+
+html[data-geld-theme='diffkit'] {
+  
+  --bgColor-canvas-default: var(--ln-main);
+  --bgColor-canvas-subtle: var(--ln-main);
+  --bgColor-canvas-inset: var(--ln-group);
+  --bgColor-default: var(--ln-card);
+  --bgColor-muted: var(--ln-group);
+  --bgColor-inset: var(--ln-group);
+  --bgColor-emphasis: var(--ln-nav-selected);
+  --bgColor-neutral-muted: var(--ln-pill-neutral);
+  --bgColor-accent-muted: color-mix(in oklch, var(--ln-accent) 12%, transparent);
+  --bgColor-success-muted: color-mix(in oklch, var(--ln-success) 14%, var(--ln-main));
+  --bgColor-danger-muted: color-mix(in oklch, var(--ln-removed) 14%, var(--ln-main));
+  --bgColor-done-muted: color-mix(in oklch, var(--ln-state-merged) 14%, var(--ln-main));
+  --bgColor-open-muted: color-mix(in oklch, var(--ln-state-open) 14%, var(--ln-main));
+  --bgColor-merged-muted: color-mix(in oklch, var(--ln-state-merged) 14%, var(--ln-main));
+  --bgColor-attention-muted: color-mix(in oklch, var(--ln-warning) 16%, var(--ln-main));
+  --bgColor-header: var(--ln-sidebar);
+  --bgColor-header-muted: var(--ln-sidebar);
+  --bgColor-overlay: var(--ln-popover);
+
+  
+  --fgColor-default: var(--ln-text);
+  --fgColor-muted: var(--ln-text-muted);
+  --fgColor-subtle: var(--ln-text-nav);
+  --fgColor-onEmphasis: var(--ln-accent-text);
+  --fgColor-accent: var(--ln-accent);
+  --fgColor-link: var(--ln-accent);
+  --fgColor-success: var(--ln-success);
+  --fgColor-danger: var(--ln-removed);
+  --fgColor-attention: var(--ln-warning);
+  --fgColor-done: var(--ln-state-merged);
+  --fgColor-open: var(--ln-state-open);
+  --fgColor-merged: var(--ln-state-merged);
+  --fgColor-num: var(--ln-line-number);
+  --fgColor-neutral: var(--ln-text-muted);
+
+  
+  --borderColor-default: var(--ln-comment-card-border);
+  --borderColor-muted: var(--ln-card-border);
+  --borderColor-emphasis: var(--ln-chip-border);
+  --borderColor-accentEmphasis: var(--ln-accent);
+  --borderColor-success: var(--ln-success);
+  --borderColor-danger: var(--ln-removed);
+  --borderColor-attention: var(--ln-warning);
+  --borderColor-done: var(--ln-state-merged);
+  --borderColor-open: var(--ln-state-open);
+  --borderColor-merged: var(--ln-state-merged);
+  --borderColor-neutral: var(--ln-chip-border);
+
+  
+  --color-accent-fg: var(--ln-accent);
+  --color-accent-emphasis: var(--ln-accent);
+  --color-accent-muted: var(--ln-pill-neutral);
+  --color-pr-merge-fg: var(--ln-merge);
+  --color-fg-accent: var(--ln-accent);
+  --color-fg-success: var(--ln-success);
+  --color-fg-danger: var(--ln-removed);
+  --color-fg-attention: var(--ln-warning);
+  --color-fg-done: var(--ln-state-merged);
+  --color-fg-open: var(--ln-state-open);
+  --color-fg-merged: var(--ln-state-merged);
+  --color-fg-onEmphasis: var(--ln-accent-text);
+  --color-border-default: var(--ln-comment-card-border);
+  --color-border-muted: var(--ln-card-border);
+  --color-border-emphasis: var(--ln-chip-border);
+  --color-border-accent-emphasis: var(--ln-accent);
+  --color-canvas-default: var(--ln-main);
+  --color-canvas-subtle: var(--ln-main);
+  --color-canvas-inset: var(--ln-group);
+  --color-fg-default: var(--ln-text);
+  --color-fg-muted: var(--ln-text-muted);
+  --color-fg-subtle: var(--ln-text-nav);
+  --color-fg-num: var(--ln-line-number);
+
+  
+  --button-primary-bgColor-rest: var(--ln-text);
+  --button-primary-bgColor-hover: var(--ln-text-strong);
+  --button-primary-bgColor-active: var(--ln-text-header);
+  --button-primary-bgColor-disabled: var(--ln-group);
+  --button-primary-fgColor-rest: var(--ln-main);
+  --button-primary-fgColor-hover: var(--ln-main);
+  --button-primary-fgColor-disabled: var(--ln-text-muted);
+  --button-secondary-bgColor-rest: var(--ln-button);
+  --button-secondary-bgColor-hover: var(--ln-button-hover);
+  --button-secondary-bgColor-active: var(--ln-nav-selected);
+  --button-secondary-bgColor-disabled: var(--ln-group);
+  --button-secondary-fgColor-rest: var(--ln-text);
+  --button-secondary-fgColor-hover: var(--ln-text-strong);
+  --button-secondary-fgColor-disabled: var(--ln-text-muted);
+  --button-danger-bgColor-rest: var(--ln-removed);
+  --button-danger-bgColor-hover: color-mix(in oklch, var(--ln-removed) 88%, black);
+  --button-danger-fgColor-rest: var(--ln-accent-text);
+  --button-invisible-fgColor-rest: var(--ln-text-muted);
+  --button-invisible-fgColor-hover: var(--ln-text);
+
+  
+  --control-bgColor-rest: var(--ln-main);
+  --control-bgColor-hover: var(--ln-group);
+  --control-bgColor-active: var(--ln-nav-selected);
+  --control-borderColor-rest: var(--ln-chip-border);
+  --control-borderColor-hover: var(--ln-icon-faint);
+  --control-borderColor-active: var(--ln-focus);
+  --control-borderColor-emphasis: var(--ln-focus);
+  --control-fgColor-rest: var(--ln-text);
+  --control-fgColor-disabled: var(--ln-text-muted);
+  --control-placeholder-fgColor-rest: var(--ln-composer-placeholder);
+  --selection-bgColor: var(--ln-nav-selected);
+  --focus-outlineColor: var(--ln-focus);
+
+  
+  --shadow-resting-xsmall: 0 0 0 0.5px var(--ln-card-border);
+  --shadow-resting-small: 0 0 0 0.5px var(--ln-card-border), var(--ln-main-shadow);
+  --shadow-resting-medium: 0 0 0 0.5px var(--ln-card-border), var(--ln-main-shadow);
+  --shadow-resting-large: 0 0 0 0.5px var(--ln-card-border), var(--ln-main-shadow);
+  --shadow-floating-small:
+    inset 0 1px 0 0 var(--glass-edge), inset 0 0 0 1px var(--glass-rim),
+    var(--ln-popover-shadow);
+  --shadow-floating-medium:
+    inset 0 1px 0 0 var(--glass-edge), inset 0 0 0 1px var(--glass-rim),
+    var(--ln-popover-shadow);
+  --shadow-floating-large:
+    inset 0 1px 0 0 var(--glass-edge), inset 0 0 0 1px var(--glass-rim),
+    var(--ln-popover-shadow);
+
+  
+  --diffStat-addition-fgColor: var(--ln-added);
+  --diffStat-addition-bgColor: color-mix(in oklch, var(--ln-added) 16%, transparent);
+  --diffStat-deletion-fgColor: var(--ln-removed);
+  --diffStat-deletion-bgColor: color-mix(in oklch, var(--ln-removed) 16%, transparent);
+  --diffBlob-addition-fgColor: var(--ln-added);
+  --diffBlob-deletion-fgColor: var(--ln-removed);
+  --diffBlob-addition-num-bgColor: color-mix(in oklch, var(--ln-added) 10%, transparent);
+  --diffBlob-deletion-num-bgColor: color-mix(in oklch, var(--ln-removed) 10%, transparent);
+  --diffBlob-addition-line-bgColor: color-mix(in oklch, var(--ln-added) 7%, transparent);
+  --diffBlob-deletion-line-bgColor: color-mix(in oklch, var(--ln-removed) 7%, transparent);
+  --diffBlob-hunk-num-bgColor: var(--ln-gap);
+  --blob-num-hover-bgColor: var(--ln-row-hover);
+
+  
+  --borderRadius-small: 4px;
+  --borderRadius-medium: 6px;
+  --borderRadius-large: 10px;
+  --borderRadius-xlarge: 14px;
+}
+
+html[data-geld-theme='diffkit'] body {
+  font-family:
+    'Inter Variable', 'Inter', 'Avenir Next', ui-sans-serif, system-ui,
+    -apple-system, 'Segoe UI', sans-serif;
+  font-weight: 450;
+  -webkit-font-smoothing: antialiased;
+}
+
+html[data-geld-theme='diffkit'] :is(code, pre, kbd, samp, .text-mono, .color-fg-muted.text-mono) {
+  font-family:
+    'Geist Mono Variable', 'SF Mono', ui-monospace, 'Cascadia Code', Menlo,
+    monospace;
+  font-weight: 450;
+  letter-spacing: -0.02em;
+}
+
+html[data-geld-theme='diffkit'] ::selection {
+  background: var(--ln-nav-selected);
+}
+
+html[data-geld-theme='diffkit'] * {
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+  scrollbar-width: thin;
+}
+
+html[data-geld-theme='diffkit'] ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html[data-geld-theme='diffkit'] ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html[data-geld-theme='diffkit'] ::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  background-clip: padding-box;
+  border: 3px solid transparent;
+  border-radius: 9999px;
+}
+
+html[data-geld-theme='diffkit'] ::-webkit-scrollbar-thumb:hover {
+  background: var(--ln-icon-faint);
+  background-clip: padding-box;
+  border: 3px solid transparent;
+}
+
+html[data-geld-theme='diffkit'] :focus-visible {
+  outline: 1px solid var(--ln-focus);
+  outline-offset: -1px;
+}
+
+html[data-geld-theme='diffkit'] .btn:not(.btn-primary):not(.btn-danger):not(.btn-link):not(.btn-invisible) {
+  border: 0;
+  border-radius: 6px;
+  box-shadow: var(--glass-chip);
+}
+
+html[data-geld-theme='diffkit'] .btn-primary {
+  border: 0;
+  border-radius: 6px;
+  box-shadow: var(--glass-solid);
+}
+
+html[data-geld-theme='diffkit'] .btn-danger {
+  border: 0;
+  border-radius: 6px;
+  box-shadow: var(--glass-solid);
+}
+
+html[data-geld-theme='diffkit'] .js-issue-row,
+html[data-geld-theme='diffkit'] .js-issue-row > div:first-child {
+  border-radius: 8px;
+}
+
+html[data-geld-theme='diffkit'] .js-issue-row:hover {
+  background: var(--ln-row-hover);
+}
+
+html[data-geld-theme='diffkit'] .Box,
+html[data-geld-theme='diffkit'] .TimelineItem,
+html[data-geld-theme='diffkit'] .timeline-comment,
+html[data-geld-theme='diffkit'] .discussion-sidebar-item,
+html[data-geld-theme='diffkit'] .js-socket-channel,
+html[data-geld-theme='diffkit'] [class*='border'] .Box {
+  border-radius: 10px;
+}
+
+html[data-geld-theme='diffkit'] .IssueLabel,
+html[data-geld-theme='diffkit'] .IssueLabel--large,
+html[data-geld-theme='diffkit'] [data-view-component='label'] {
+  border-radius: 9999px;
+  font-weight: 500;
+}
+
+html[data-geld-theme='diffkit'] .markdown-body code,
+html[data-geld-theme='diffkit'] .markdown-body tt {
+  background: var(--ln-inline-code);
+  box-shadow: inset 0 0 0 0.5px var(--ln-inline-code-ring);
+  border-radius: 4px;
+}
+
+html[data-geld-theme='diffkit'] .markdown-body pre,
+html[data-geld-theme='diffkit'] .highlight,
+html[data-geld-theme='diffkit'] .snippet-clipboard,
+html[data-geld-theme='diffkit'] .Box--overlay pre {
+  background: var(--ln-card);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 0.5px var(--ln-card-border), var(--ln-main-shadow);
+}
+
+html[data-geld-theme='diffkit'] .file-info,
+html[data-geld-theme='diffkit'] .file-actions,
+html[data-geld-theme='diffkit'] .diff-file-header,
+html[data-geld-theme='diffkit'] .file,
+html[data-geld-theme='diffkit'] [data-testid='diff-file-header'],
+html[data-geld-theme='diffkit'] [data-path] {
+  border-radius: 8px 8px 0 0;
+}
+
+html[data-geld-theme='diffkit'] header,
+html[data-geld-theme='diffkit'] .Header,
+html[data-geld-theme='diffkit'] [data-testid='top-nav-header'],
+html[data-geld-theme='diffkit'] .AppHeader {
+  background: var(--ln-sidebar);
+  border-bottom: 0.5px solid var(--ln-header-rule);
+}
+
