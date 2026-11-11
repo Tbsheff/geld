@@ -499,15 +499,15 @@ html[data-geld-theme='diffkit'] {
 
   
   --diffStat-addition-fgColor: var(--ln-added) !important;
-  --diffStat-addition-bgColor: color-mix(in oklch, var(--ln-added) 16%, transparent) !important;
+  --diffStat-addition-bgColor: color-mix(in oklch, var(--ln-added) 16%, var(--ln-main)) !important;
   --diffStat-deletion-fgColor: var(--ln-removed) !important;
-  --diffStat-deletion-bgColor: color-mix(in oklch, var(--ln-removed) 16%, transparent) !important;
+  --diffStat-deletion-bgColor: color-mix(in oklch, var(--ln-removed) 16%, var(--ln-main)) !important;
   --diffBlob-addition-fgColor: var(--ln-added) !important;
   --diffBlob-deletion-fgColor: var(--ln-removed) !important;
-  --diffBlob-addition-num-bgColor: color-mix(in oklch, var(--ln-added) 10%, transparent) !important;
-  --diffBlob-deletion-num-bgColor: color-mix(in oklch, var(--ln-removed) 10%, transparent) !important;
-  --diffBlob-addition-line-bgColor: color-mix(in oklch, var(--ln-added) 7%, transparent) !important;
-  --diffBlob-deletion-line-bgColor: color-mix(in oklch, var(--ln-removed) 7%, transparent) !important;
+  --diffBlob-addition-num-bgColor: color-mix(in oklch, var(--ln-added) 16%, var(--ln-card)) !important;
+  --diffBlob-deletion-num-bgColor: color-mix(in oklch, var(--ln-removed) 16%, var(--ln-card)) !important;
+  --diffBlob-addition-line-bgColor: color-mix(in oklch, var(--ln-added) 7%, var(--ln-card)) !important;
+  --diffBlob-deletion-line-bgColor: color-mix(in oklch, var(--ln-removed) 7%, var(--ln-card)) !important;
   --diffBlob-hunk-num-bgColor: var(--ln-gap) !important;
   --blob-num-hover-bgColor: var(--ln-row-hover) !important;
 
@@ -549,8 +549,8 @@ html[data-geld-theme='diffkit'] {
   
   --diffBlob-hunk-line-bgColor: var(--ln-group) !important;
   --diffBlob-hunk-num-hover-bgColor: var(--ln-nav-selected) !important;
-  --diffBlob-addition-word-bgColor: color-mix(in oklch, var(--ln-added) 28%, transparent) !important;
-  --diffBlob-deletion-word-bgColor: color-mix(in oklch, var(--ln-removed) 28%, transparent) !important;
+  --diffBlob-addition-word-bgColor: color-mix(in oklch, var(--ln-added) 28%, var(--ln-card)) !important;
+  --diffBlob-deletion-word-bgColor: color-mix(in oklch, var(--ln-removed) 28%, var(--ln-card)) !important;
   --diffBlob-expand-button-color-bgColor: var(--ln-group) !important;
   --diffBlob-expand-button-color-borderColor: var(--ln-card-border) !important;
   --diffBlob-expander-iconColor: var(--ln-icon-faint) !important;
@@ -720,4 +720,87 @@ html[data-geld-theme='diffkit'] .flash-banner {
   background: var(--ln-group);
   border-color: var(--ln-card-border);
   color: var(--ln-text);
+}
+
+html[data-geld-theme='diffkit'] body {
+  background: var(--ln-sidebar);
+}
+
+html[data-geld-theme='diffkit'] body > div.logged-in {
+  max-width: min(1280px, calc(100% - 48px));
+  margin: 16px auto 24px;
+  background: var(--ln-card);
+  border-radius: 12px;
+  box-shadow:
+    inset 0 0 0 0.5px var(--ln-card-border),
+    var(--ln-main-shadow);
+}
+
+html[data-geld-theme='diffkit'] .header-wrapper,
+html[data-geld-theme='diffkit'] .application-main,
+html[data-geld-theme='diffkit'] .application-main > div,
+html[data-geld-theme='diffkit'] .application-main > div > main,
+html[data-geld-theme='diffkit'] .application-main > main,
+html[data-geld-theme='diffkit'] #js-repo-pjax-container,
+html[data-geld-theme='diffkit'] .footer,
+html[data-geld-theme='diffkit'] .Footer {
+  background: transparent;
+}
+
+html[data-geld-theme='diffkit'] .header-wrapper .GlobalNav,
+html[data-geld-theme='diffkit'] .GlobalNav {
+  background: var(--ln-card);
+  border-bottom: 0;
+  border-radius: 12px 12px 0 0;
+}
+
+html[data-geld-theme='diffkit'] .AppHeader,
+html[data-geld-theme='diffkit'] header,
+html[data-geld-theme='diffkit'] .Header,
+html[data-geld-theme='diffkit'] [data-testid='top-nav-header'] {
+  border-bottom: 0;
+  background: transparent;
+}
+
+html[data-geld-theme='diffkit'] [class*='UnderlineItem'][aria-current]::after,
+html[data-geld-theme='diffkit'] [class*='UnderlineItem'].selected::after,
+html[data-geld-theme='diffkit'] [class*='NavItem'][aria-current]::after {
+  background: transparent;
+}
+
+html[data-geld-theme='diffkit'] [class*='UnderlineItem'][aria-current],
+html[data-geld-theme='diffkit'] [class*='UnderlineItem'].selected,
+html[data-geld-theme='diffkit'] [class*='NavItem'][aria-current] {
+  background: var(--ln-nav-selected);
+  border-radius: 8px;
+}
+
+html[data-geld-theme='diffkit'] td.blob-code-deletion,
+html[data-geld-theme='diffkit'] td.blob-code.blob-code-deletion {
+  background-color: color-mix(in oklch, var(--ln-removed) 7%, var(--ln-card));
+}
+
+html[data-geld-theme='diffkit'] td.blob-code-addition,
+html[data-geld-theme='diffkit'] td.blob-code.blob-code-addition {
+  background-color: color-mix(in oklch, var(--ln-added) 7%, var(--ln-card));
+}
+
+html[data-geld-theme='diffkit'] td.blob-num-deletion,
+html[data-geld-theme='diffkit'] td.blob-num.blob-num-deletion {
+  background-color: color-mix(in oklch, var(--ln-removed) 16%, var(--ln-card));
+}
+
+html[data-geld-theme='diffkit'] td.blob-num-addition,
+html[data-geld-theme='diffkit'] td.blob-num.blob-num-addition {
+  background-color: color-mix(in oklch, var(--ln-added) 16%, var(--ln-card));
+}
+
+html[data-geld-theme='diffkit'] td.blob-code-context,
+html[data-geld-theme='diffkit'] td.blob-num {
+  background-color: transparent;
+}
+
+html[data-geld-theme='diffkit'] tr.hunk td,
+html[data-geld-theme='diffkit'] td.blob-code-hunk {
+  background-color: var(--ln-group);
 }
