@@ -1,21 +1,5 @@
 
 
-@font-face {
-  font-family: 'Inter Variable';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 100 900;
-  src: url('/fonts/inter-var.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Geist Mono Variable';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 100 900;
-  src: url('/fonts/geist-mono-var.woff2') format('woff2');
-}
-
 html[data-geld-theme='diffkit']:not([data-color-mode='dark']) {
   color-scheme: light;
 
